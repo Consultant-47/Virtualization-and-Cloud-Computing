@@ -1,0 +1,8 @@
+FROM debian:bookworm
+RUN echo "Hello, World! [v1]" > /hello.txt
+RUN ls > "/ls_before.txt"
+COPY src/ /app/
+RUN ls > "/ls_after.txt"
+RUN cat "/app/hello.txt" > "/test1.txt"
+RUN if [ -f /app/hello.txt ]; then echo "/app/hello.txt exists" >> /log.txt && echo "Current contents:" >> /log.txt && cat /app/hello.txt >> /log.txt; else echo "/app/hello.txt does not exist" >> /log.txt; fi && echo "Overwriting /app/hello.txt" >> /log.txt && echo "New data" > /app/hello.txt && echo "New contents:" >> /log.txt && cat /app/hello.txt >> /log.txt
+RUN cat "/app/hello.txt" > "/test2.txt"

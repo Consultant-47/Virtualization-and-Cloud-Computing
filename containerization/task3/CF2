@@ -1,0 +1,4 @@
+FROM debian:bookworm
+RUN echo "Hello, World! [v1] -from meee" > /hello.txt
+COPY src/ /app/
+RUN echo "Hello, World! -fro meee" > /app/hello.txt
